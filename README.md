@@ -2,19 +2,20 @@
 
 ```text
 ingredient-recipe-recommender/
+├── model/
+│   ├── recipe-recommender.joblib   # Recommendation Model
 ├── src/
 │   ├── data/                       # Datasets (not in Git)
 │   ├── __init__.py                 # Python entry point for src module
+│   ├── app.py                      # Streamlit application
 │   ├── features.py                 # Features engineering and selection file
+│   ├── main.py                     # Main model pipeline
 │   ├── modeling.py                 # File for modeling
 │   ├── preprocessing.py            # Data cleaning
 │   ├── recommender.py              # Recommendation engine
 │   ├── validation.py               # Developed validation checks
-├── app.py                          # Streamlit application
-├── main.py                         # Main model pipeline
 ├── LICENSE                         # How the app can be used
 ├── README.md                       # Instructions for use
-├── recipe_recommender_mode.joblib  # Saved model
 ├── requirements.txt                # Dependencies
 ├── selected_features.csv           # CSV output from the model
 ```
