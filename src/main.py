@@ -3,6 +3,7 @@
 from preprocessing import (
     load_data,
     summary_data,
+    statistics_data,
     preprocess_data,
     plot_preparation_time,
     plot_ratings_distribution,
@@ -12,7 +13,7 @@ from preprocessing import (
     plot_prep_time_vs_ingredients,
     plot_most_used_ingredients,
 )
-# from features import select_features
+from features import get_features
 # from modeling import (
 #     optimal_number_of_clusters,
 #     optimal_silhouette_score,
@@ -48,10 +49,10 @@ def main():
 
     # Generate visualizations
     plot_preparation_time(recipes_cleaned)
-    plot_ratings_distribution(interactions)
-    plot_ingredients_distribution(recipes_cleaned)
-    plot_correlation_heatmap(recipes_cleaned)
-    plot_review_sentiment(interactions)
+    # plot_ratings_distribution(interactions)
+    # plot_ingredients_distribution(recipes_cleaned)
+    # plot_correlation_heatmap(recipes_cleaned)
+    # plot_review_sentiment(interactions)
 
     #################################
     # Preprocess the Data
@@ -61,21 +62,24 @@ def main():
     recipes_cleaned, interactions_cleaned = preprocess_data(recipes_cleaned, interactions)
 
     # Visualize Preparation Time vs Number of Ingredients
-    plot_prep_time_vs_ingredients(recipes_cleaned)
+    # plot_prep_time_vs_ingredients(recipes_cleaned)
 
     # Visualize Most Used Ingredients
-    plot_most_used_ingredients(recipes_cleaned)
+    # plot_most_used_ingredients(recipes_cleaned)
+
+    print(statistics_data(recipes_cleaned, interactions_cleaned))
 
     #################################
     # Feature Engineering & Selection
     #################################
 
     # # Feature selection
-    # selected_features = select_features(recipes_cleaned, interactions_cleaned)
+    selected_features = get_features(recipes_cleaned, interactions_cleaned)
 
     # # Print the first few rows to verify
-    # print("Selected Features Sample:")
-    # print(selected_features.head())
+    print("Selected Features Sample:")
+    print(statistics_data(selected_features, interactions_cleaned))
+    print(selected_features.head())
 
     # #################################
     # # Find the Optimal k for K-Means

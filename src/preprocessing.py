@@ -33,7 +33,7 @@ def load_data():
 def summary_data(recipes, interactions):
     """summarize the data for humans"""
 
-    # Summary statistics
+    # Summary Columns
     print("\nPrinting the column names for recipes:")
     print(recipes.columns)
     print("\nPrinting the column names for interactions:")
@@ -57,13 +57,28 @@ def summary_data(recipes, interactions):
     print("\nChecking interactions for missing values:")
     print(interactions.isnull().sum())
 
+def statistics_data(recipes, interactions):
+    """Generate statistics for the data"""
+
+    # Summary statistics
+    print("\nSummary statistics for recipes:")
+    print(recipes.describe())
+    print("\nSummary statistics for interactions:")
+    print(interactions.describe())
+
+    # Class distribution
+    print("\nClass distribution for ratings:")
+    print(interactions["rating"].value_counts())
+
+    # Check for data leakage
+    # check_data_leakage(recipes, interactions)
 
 def plot_preparation_time(recipes):
     """
     Plots histogram of preparation time
     """
 
-    plt.hist(recipes['minutes'], bins=50, edgecolor='blue')
+    plt.hist(recipes['minutes'], bins=18, edgecolor='blue')
     plt.title('Distribution of Preparation Time (minutes)')
     plt.xlabel('Preparation Time (minutes)')
     plt.ylabel('Frequency')
